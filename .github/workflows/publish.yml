@@ -1,0 +1,33 @@
+name: Publish Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v2
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the extension
+      - name: Build extension
+        run: npm run package
+
+      # Publish the extension to the Marketplace
+      - name: Publish extension
+        uses: actions/upload-release-asset@v1
+        with:
+          repo: owner/repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          file: '*.vsix'
+          name: '*.vsix'
+          draft: false
+          prerelease: false

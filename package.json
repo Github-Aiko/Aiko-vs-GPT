@@ -1,0 +1,222 @@
+{
+    "name": "vs-aikoai",
+    "displayName": "VS ChatGPT",
+    "description": "VS ChatGPT is a plugin for Visual Studio Code that integrates the powerful ChatGPT language model into the popular code editor. With vs-aikoai, developers can leverage the capabilities of ChatGPT to generate snippets, suggest completions for open-ended questions, and even write entire functions or modules.",
+    "version": "1.5.0",
+    "keywords": [
+        "OpenAI",
+        "ChatGPT",
+        "AI",
+        "generate snippets",
+        "suggest",
+        "ask",
+        "questions"
+    ],
+    "author": {
+        "name": "Fedev"
+    },
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:vs-aikoai.completions",
+        "onCommand:vs-aikoai.explain_regex",
+        "onCommand:vs-aikoai.explain_code",
+        "onCommand:vs-aikoai.generate_unit_tests",
+        "onCommand:vs-aikoai.comment_code"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [{
+                "command": "vs-aikoai.completions",
+                "title": "ChatGPT: Text completions"
+            },
+            {
+                "command": "vs-aikoai.explain_regex",
+                "title": "ChatGPT: Explain regular expression"
+            },
+            {
+                "command": "vs-aikoai.explain_code",
+                "title": "ChatGPT: Explain code snippet"
+            },
+            {
+                "command": "vs-aikoai.generate_unit_tests",
+                "title": "ChatGPT: Generate unit tests"
+            },
+            {
+                "command": "vs-aikoai.comment_code",
+                "title": "ChatGPT: Add comments"
+            },
+            {
+                "command": "vs-aikoai.generate_jsdoc",
+                "title": "ChatGPT: Generate JSDoc"
+            }
+        ],
+        "menus": {
+            "editor/context": [{
+                    "command": "vs-aikoai.completions",
+                    "when": "editorHasSelection"
+                },
+                {
+                    "command": "vs-aikoai.explain_regex",
+                    "when": "editorHasSelection"
+                },
+                {
+                    "command": "vs-aikoai.explain_code",
+                    "when": "editorHasSelection"
+                },
+                {
+                    "command": "vs-aikoai.generate_unit_tests",
+                    "when": "editorHasSelection"
+                },
+                {
+                    "command": "vs-aikoai.comment_code",
+                    "when": "editorHasSelection"
+                },
+                {
+                    "command": "vs-aikoai.generate_jsdoc",
+                    "when": "editorHasSelection && resourceLangId == 'javascript' || resourceLangId == 'typescript'"
+                }
+            ]
+        },
+        "keybindings": [{
+            "command": "vs-aikoai.completions",
+            "key": "alt+ctrl+shift+g",
+            "mac": "alt+cmd+shift+g"
+        }],
+        "configuration": {
+            "title": "VS ChatGPT",
+            "properties": {
+                "vs-aikoai.apikey": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Your OpenAI secret API key."
+                },
+                "vs-aikoai.model": {
+                    "type": "string",
+                    "default": "gpt-3.5-turbo",
+                    "enum": [
+                        "gpt-3.5-turbo",
+                        "text-davinci-003",
+                        "text-curie-001",
+                        "text-babbage-001",
+                        "text-ada-001"
+                    ],
+                    "enumDescriptions": [
+                        "Most capable GPT-3 model. Can do any task the other models can do, often with higher quality, longer output and better instruction-following.",
+                        "Very capable, but faster and lower cost than Davinci.",
+                        "Capable of straightforward tasks, very fast, and lower cost.",
+                        "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost."
+                    ],
+                    "description": "The OpenAI API is powered by a family of models with different capabilities and price points."
+                },
+                "vs-aikoai.max_tokens": {
+                    "type": "number",
+                    "default": 2048,
+                    "description": "The maximum number of tokens to generate in the completion. Most models have a context length of 2048 tokens (except for the newest models, which support 4000)."
+                },
+                "vs-aikoai.explain_regex_cmd": {
+                    "type": "string",
+                    "default": "Explain this regular expression",
+                    "description": "Command to ask for an explanation of a regular expression."
+                },
+                "vs-aikoai.explain_code_snippet_cmd": {
+                    "type": "string",
+                    "default": "Explain this code snippet",
+                    "description": "Command to ask for an explanation of a code snippet."
+                },
+                "vs-aikoai.generate_unit_test_cmd": {
+                    "type": "string",
+                    "default": "Write unit test for this code snippet",
+                    "description": "Command to ask to generate unit tests for a function."
+                },
+                "vs-aikoai.comment_code_cmd": {
+                    "type": "string",
+                    "default": "Add comments to each line of this code snippet",
+                    "description": "Command to ask to add comments to code snippet."
+                },
+                "vs-aikoai.generate_jsdoc_cmd": {
+                    "type": "string",
+                    "default": "Write a jsdoc for this code snippet",
+                    "description": "Command to ask to generate jsdoc for a function."
+                }
+            }
+        },
+        "walkthroughs": [{
+            "id": "vs-aikoai-setup-api",
+            "title": "Setup VS ChatGPT",
+            "description": "Your first steps for setting up VS ChatGPT and bringing the capabilities of OpenAI directly into Visual Studio Code.",
+            "steps": [{
+                    "id": "vs-aikoai-singup-openai",
+                    "title": "OpenAI Account",
+                    "description": "Create your OpenAI account.\n[Sign up](https://beta.openai.com/signup)",
+                    "media": {
+                        "image": "images/walkthroughs/vs-aikoai-singup-openai.png",
+                        "altText": "OpenAI Signup screen"
+                    }
+                },
+                {
+                    "id": "vs-aikoai-gen-openai-api",
+                    "title": "Generate OpenAI API Key",
+                    "description": "Generate a new API key on your OpenAI account.\n[Go to OpenAI Profile](https://beta.openai.com/account/api-keys).",
+                    "media": {
+                        "image": "images/walkthroughs/vs-aikoai-gen-openai-api.png",
+                        "altText": "OpenAI Profile screen"
+                    }
+                },
+                {
+                    "id": "vs-aikoai-setup-api-key",
+                    "title": "Setup VS ChatGPT API Key",
+                    "description": "Open the settings of VS ChatGPT extension and paste the API Key.",
+                    "media": {
+                        "image": "images/walkthroughs/vs-aikoai-setup-api-key.png",
+                        "altText": "VSCode settings screen"
+                    },
+                    "completionEvents": [
+                        "onSettingChanged:vs-aikoai.apikey"
+                    ]
+                }
+            ]
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.74.0",
+        "@types/glob": "^8.0.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
+        "eslint": "^8.28.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.1.0",
+        "typescript": "^4.9.3",
+        "@vscode/test-electron": "^2.2.0"
+    },
+    "dependencies": {
+        "axios": "^1.2.2",
+        "dayjs": "^1.11.7"
+    },
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#0099fa",
+        "theme": "dark"
+    },
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Fede91/vs-aikoai"
+    },
+    "homepage": "https://github.com/Fede91/vs-aikoai/blob/main/README.md",
+    "publisher": "0xfedev"
+}
