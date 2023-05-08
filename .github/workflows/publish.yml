@@ -19,7 +19,7 @@ jobs:
 
       # Build the extension
       - name: Build extension
-        run: npm run package
+        run: npm run build
 
       # Publish the extension to the Marketplace
       - name: Publish extension

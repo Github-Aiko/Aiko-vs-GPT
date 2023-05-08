@@ -1,7 +1,7 @@
 {
     "name": "vs-aikoai",
-    "displayName": "VS ChatGPT",
-    "description": "VS ChatGPT is a plugin for Visual Studio Code that integrates the powerful ChatGPT language model into the popular code editor. With vs-aikoai, developers can leverage the capabilities of ChatGPT to generate snippets, suggest completions for open-ended questions, and even write entire functions or modules.",
+    "displayName": "VS AikoAI",
+    "description": "VS AikoAI is a plugin for Visual Studio Code that integrates the powerful ChatGPT language model into the popular code editor. With vs-aikoai, developers can leverage the capabilities of ChatGPT to generate snippets, suggest completions for open-ended questions, and even write entire functions or modules.",
     "version": "1.5.0",
     "keywords": [
         "OpenAI",
@@ -88,7 +88,7 @@
             "mac": "alt+cmd+shift+g"
         }],
         "configuration": {
-            "title": "VS ChatGPT",
+            "title": "VS AikoAI",
             "properties": {
                 "vs-aikoai.apikey": {
                     "type": "string",
@@ -147,8 +147,8 @@
         },
         "walkthroughs": [{
             "id": "vs-aikoai-setup-api",
-            "title": "Setup VS ChatGPT",
-            "description": "Your first steps for setting up VS ChatGPT and bringing the capabilities of OpenAI directly into Visual Studio Code.",
+            "title": "Setup VS AikoAI",
+            "description": "Your first steps for setting up VS AikoAI and bringing the capabilities of OpenAI directly into Visual Studio Code.",
             "steps": [{
                     "id": "vs-aikoai-singup-openai",
                     "title": "OpenAI Account",
@@ -169,8 +169,8 @@
                 },
                 {
                     "id": "vs-aikoai-setup-api-key",
-                    "title": "Setup VS ChatGPT API Key",
-                    "description": "Open the settings of VS ChatGPT extension and paste the API Key.",
+                    "title": "Setup VS AikoAI API Key",
+                    "description": "Open the settings of VS AikoAI extension and paste the API Key.",
                     "media": {
                         "image": "images/walkthroughs/vs-aikoai-setup-api-key.png",
                         "altText": "VSCode settings screen"
